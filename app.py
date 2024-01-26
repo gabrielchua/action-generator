@@ -27,7 +27,7 @@ def generate_payload(category_1, category_2, category_3):
     },
     {
       'role': 'user',
-      'content': 'REPLACE_THIS_W'
+      'content': 'PLS_REPLACE_THIS'
     }
   ],
   'max_tokens': 1,
