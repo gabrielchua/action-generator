@@ -9,10 +9,11 @@ st.subheader("This tool helps you generate the Plumber action. \n Please state t
 st.info("💡 **Tip**: These categories should ideally be **mutually exclusive** (i.e. can only belong to one category) and **collectively exhaustive** (i.e. all possibly categories are defined).")
 
 
-category_1 = st.text_input("Category 1")
-category_2 = st.text_input("Category 2")
-category_3 = st.text_input("Category 3")
+col1, col2 = st.columns([0.3, 0.7])
 
+category_1 = col1.text_input("Category 1")
+category_2 = col1.text_input("Category 2")
+category_3 = col1.text_input("Category 3")
 
 
 def generate_payload(category_1, category_2, category_3):
@@ -40,10 +41,10 @@ def generate_payload(category_1, category_2, category_3):
     return payload
 
 
-if st.button('Generate'):
+if col1.button('Generate'):
     if (category_1 == "") or (category_2 == "") or (category_3 == ""):
         st.toast('Please fill in the 3 categories.', icon='⚠️')
     else:
         payload = generate_payload(category_1, category_2, category_3)
         payload_str = json.dumps(payload, indent=4)
-        st.code(payload_str, language='json')
+        col2.code(payload_str, language='json')
